@@ -245,12 +245,34 @@ header nav a:not(.button):hover {
   line-height: 1.6;
 }
 
+#about {
+  padding-block: var(--space-lg);
+  background: var(--color-gray-light);
+  text-align: center;
+}
+
+#about h2 {
+  color: var(--color-text);
+}
+
+#about p {
+  max-width: 65ch;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
 @media (min-width: 768px) {
   .container {
     padding-inline: 2rem;
   }
 
   #services {
+    padding-block: var(--space-xl);
+  }
+
+  #about {
     padding-block: var(--space-xl);
   }
 
