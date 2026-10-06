@@ -3,10 +3,97 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Timothy O Design</title>
+  <meta name="description" content="Timothy O Design offers graphic design, web development, branding, and digital services.">
+  <meta property="og:title" content="Timothy O Design — Graphic Design &amp; Web Development">
+  <meta property="og:description" content="Graphic design, web development, branding, and digital services by Timothy O Design.">
+  <meta property="og:type" content="website">
+  <title>Timothy O Design — Graphic Design &amp; Web Development</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
+  <header id="top">
+    <a href="#top">Timothy O Design</a>
+    <nav aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact">Get a quote</a>
+    </nav>
+    <button id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <main>
+    <section id="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Thoughtful design. Effective digital experiences.</h1>
+      <p>Timothy O Design brings graphic design and web development together to help your ideas make a lasting impression.</p>
+      <a href="#services">See my work</a>
+      <a href="#contact">Contact me</a>
+    </section>
+
+    <section id="services" aria-labelledby="services-title">
+      <h2 id="services-title">Services</h2>
+      <p>Creative and digital services to bring your ideas to life.</p>
+      <article class="card">
+        <span aria-hidden="true">🎨</span>
+        <h3>Graphic Design</h3>
+        <p>Clear, considered visuals for your business and its communications.</p>
+      </article>
+      <article class="card">
+        <span aria-hidden="true">💻</span>
+        <h3>Web Development</h3>
+        <p>Responsive websites designed to share your work and connect with your audience.</p>
+      </article>
+      <article class="card">
+        <span aria-hidden="true">✏️</span>
+        <h3>Branding</h3>
+        <p>Distinctive visual identities that help your business present itself consistently.</p>
+      </article>
+      <article class="card">
+        <span aria-hidden="true">✨</span>
+        <h3>Digital</h3>
+        <p>Digital creative assets to support your online presence.</p>
+      </article>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>Timothy O Design combines graphic design and web development to help individuals and businesses communicate with clarity. Each project is shaped around your goals, from the first visual idea to the finished digital experience.</p>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>Have a project in mind? Get in touch to discuss it.</p>
+      <form id="contactForm">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Send message</button>
+      </form>
+      <p>
+        <a href="tel:08124696937">08124696937</a>
+        <a href="mailto:akinniyiobaloluwa71@gmail.com">akinniyiobaloluwa71@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Timothy O Design</p>
+    <a href="tel:08124696937">08124696937</a>
+    <a href="mailto:akinniyiobaloluwa71@gmail.com">akinniyiobaloluwa71@gmail.com</a>
+  </footer>
 </body>
 </html>
