@@ -6,6 +6,8 @@
   --color-gray-mid: #D1D5DB;
   --color-text: #1A1A1A;
   --color-text-muted: #6B7280;
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-shadow-strong: rgba(0, 0, 0, 0.10);
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
@@ -26,6 +28,20 @@ body {
   line-height: 1.6;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 .container {
   width: 100%;
   max-width: 1100px;
@@ -38,7 +54,7 @@ header {
   top: 0;
   z-index: 100;
   background: var(--color-white);
-  box-shadow: 0 1px 4px rgb(26 26 26 / 10%);
+  box-shadow: 0 1px 4px var(--color-shadow-strong);
 }
 
 .header-inner {
@@ -66,7 +82,7 @@ header nav {
   gap: var(--space-sm);
   padding: var(--space-md) 1.25rem;
   background: var(--color-white);
-  box-shadow: 0 4px 8px rgb(26 26 26 / 10%);
+  box-shadow: 0 4px 8px var(--color-shadow-strong);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-0.5rem);
@@ -169,6 +185,14 @@ header nav a:not(.button):hover {
   margin-left: var(--space-xs);
 }
 
+#hero .button--ghost:focus-visible {
+  outline-color: var(--color-white);
+}
+
+#hero .button--primary:focus-visible {
+  outline-color: var(--color-blue-dark);
+}
+
 .button--primary {
   background: var(--color-white);
   color: var(--color-blue);
@@ -218,13 +242,13 @@ header nav a:not(.button):hover {
   border: 1px solid var(--color-gray-mid);
   border-radius: 12px;
   background: var(--color-white);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px var(--color-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 8px 20px var(--color-shadow-strong);
 }
 
 .card > span {
