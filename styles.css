@@ -189,9 +189,73 @@ header nav a:not(.button):hover {
   color: var(--color-blue);
 }
 
+#services {
+  padding-block: var(--space-lg);
+  background: var(--color-white);
+}
+
+#services h2 {
+  color: var(--color-text);
+  text-align: center;
+}
+
+.services-subtitle {
+  max-width: 60ch;
+  margin: var(--space-xs) auto 0;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-gray-mid);
+  border-radius: 12px;
+  background: var(--color-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.card > span {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: 2rem;
+}
+
+.card h3 {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.card p {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 @media (min-width: 768px) {
   .container {
     padding-inline: 2rem;
+  }
+
+  #services {
+    padding-block: var(--space-xl);
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   header nav {
@@ -221,5 +285,11 @@ header nav a:not(.button):hover {
 
   #hero h1 {
     font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
