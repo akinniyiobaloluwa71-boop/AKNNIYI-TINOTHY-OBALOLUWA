@@ -13,26 +13,28 @@
 </head>
 <body>
   <header id="top">
-    <a href="#top">Timothy O Design</a>
-    <nav aria-label="Main navigation">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact">Get a quote</a>
-    </nav>
-    <button id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </button>
+    <div class="container header-inner">
+      <a class="logo" href="#top">Timothy O Design</a>
+      <nav id="primaryNav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="button button--quote" href="#contact">Get a quote</a>
+      </nav>
+      <button id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
   </header>
 
   <main>
     <section id="hero" aria-labelledby="hero-title">
       <h1 id="hero-title">Thoughtful design. Effective digital experiences.</h1>
       <p>Timothy O Design brings graphic design and web development together to help your ideas make a lasting impression.</p>
-      <a href="#services">See my work</a>
-      <a href="#contact">Contact me</a>
+      <a class="button button--primary" href="#services">See my work</a>
+      <a class="button button--ghost" href="#contact">Contact me</a>
     </section>
 
     <section id="services" aria-labelledby="services-title">
