@@ -6,7 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const weekForm = document.getElementById("week-form");
   const goalHeading = document.getElementById("saved-goal-heading");
   const taskList = document.getElementById("task-list");
+  const progressText = document.getElementById("progress-text");
+  const progressTrack = document.querySelector(".progress-track");
+  const progressBar = document.getElementById("progress-bar");
+  const daysLeftText = document.getElementById("days-left");
   const newWeekButton = document.getElementById("new-week-button");
+  const feedbackText = document.getElementById("feedback-text");
+  const sendFeedbackButton = document.getElementById("send-feedback");
+  const feedbackSuccess = document.getElementById("feedback-success");
   let currentWeek = null;
 
   // Check that stored data has the fields this prototype uses.
@@ -38,6 +45,33 @@ document.addEventListener("DOMContentLoaded", function () {
     formCard.hidden = false;
   }
 
+  // Count completed tasks and update the progress text and bar.
+  function updateProgress() {
+    const tasks = currentWeek ? currentWeek.tasks : [];
+    const completedTasks = tasks.filter(function (task) {
+      return task.done;
+    }).length;
+    const totalTasks = tasks.length;
+    const percentage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+
+    progressText.textContent = completedTasks + " of " + totalTasks + " tasks done";
+    progressBar.style.width = percentage + "%";
+    progressTrack.setAttribute("aria-valuenow", String(Math.round(percentage)));
+  }
+
+  // Show the number of days left after today, using Monday as day one.
+  function updateDaysLeft() {
+    const dayOfWeek = new Date().getDay();
+
+    if (dayOfWeek === 0) {
+      daysLeftText.textContent = "This week is over. Start a new one.";
+      return;
+    }
+
+    const daysLeft = 7 - dayOfWeek;
+    daysLeftText.textContent = "Days left this week: " + daysLeft;
+  }
+
   // Build the goal heading and task rows from the saved week.
   function renderChecklist() {
     goalHeading.textContent = currentWeek.goal;
@@ -62,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     showChecklist();
+    updateProgress();
+    updateDaysLeft();
   }
 
   // Load and display a previously saved week, reporting invalid or inaccessible data.
@@ -172,8 +208,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Validate feedback, open a prefilled email, and show the confirmation.
+  function sendFeedback() {
+    const feedback = feedbackText.value.trim();
+
+    if (feedback === "") {
+      alert("Please write something first.");
+      return;
+    }
+
+    // Replace YOUR-EMAIL-HERE with your real email address.
+    window.location.href = "mailto:YOUR-EMAIL-HERE?subject=Prototype feedback&body=" + encodeURIComponent(feedback);
+    feedbackSuccess.hidden = false;
+    feedbackText.value = "";
+  }
+
   weekForm.addEventListener("submit", saveWeek);
   taskList.addEventListener("change", updateTask);
   newWeekButton.addEventListener("click", startNewWeek);
+  sendFeedbackButton.addEventListener("click", sendFeedback);
   loadSavedWeek();
+  updateProgress();
+  updateDaysLeft();
 });
