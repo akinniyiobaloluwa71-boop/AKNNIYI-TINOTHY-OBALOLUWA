@@ -16,6 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackSuccess = document.getElementById("feedback-success");
   let currentWeek = null;
 
+  // Send a custom event when Vercel Web Analytics is available.
+  function trackEvent(name) {
+    if (typeof window.va === "function") {
+      try {
+        window.va("event", { name: name });
+      } catch (error) {
+        console.error("Unable to send analytics event:", error);
+      }
+    }
+  }
+
   // Check that stored data has the fields this prototype uses.
   function isValidWeek(week) {
     return Boolean(
@@ -154,6 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       localStorage.setItem(storageKey, JSON.stringify(week));
       currentWeek = week;
+      // Track the first save for this week's goal.
+      trackEvent("goal_saved");
       renderChecklist();
     } catch (error) {
       console.error("Unable to save the week:", error);
@@ -180,6 +193,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       localStorage.setItem(storageKey, JSON.stringify(currentWeek));
+      if (checkbox.checked && !previousDoneState) {
+        // Track a task when it is marked complete.
+        trackEvent("task_completed");
+      }
       renderChecklist();
     } catch (error) {
       currentWeek.tasks[taskIndex].done = previousDoneState;
@@ -202,6 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
       currentWeek = null;
       weekForm.reset();
       showForm();
+      // Track a confirmed reset of the current week.
+      trackEvent("week_reset");
     } catch (error) {
       console.error("Unable to clear the saved week:", error);
       alert("The saved week could not be cleared. Please check browser storage and try again.");
@@ -217,6 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Track feedback after the tester submits non-empty feedback.
+    trackEvent("feedback_sent");
     // Replace YOUR-EMAIL-HERE with your real email address.
     window.location.href = "mailto:YOUR-EMAIL-HERE?subject=Prototype feedback&body=" + encodeURIComponent(feedback);
     feedbackSuccess.hidden = false;

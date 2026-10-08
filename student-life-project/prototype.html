@@ -6,6 +6,11 @@
   <meta name="description" content="A student-focused project shaped by real student feedback.">
   <title>Student Life Project — Prototype</title>
   <link rel="stylesheet" href="prototype.css">
+  <!-- Vercel Web Analytics only works after it is enabled in the Vercel dashboard. -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <!-- Prototype header -->
@@ -48,7 +53,7 @@
         <h2 id="saved-goal-heading"></h2>
         <!-- Weekly task progress -->
         <div class="progress-row">
-          <p id="progress-text">0 of 0 tasks done</p>
+          <p id="progress-text">0 of 3 tasks done</p>
           <div class="progress-track" role="progressbar" aria-label="Weekly task progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
             <div id="progress-bar" class="progress-fill"></div>
           </div>
